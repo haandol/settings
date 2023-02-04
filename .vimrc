@@ -28,7 +28,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 
 " Generic Programming Support
-Plugin 'ajh17/Spacegray.vim'
+Plugin 'joshdick/onedark.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Townk/vim-autoclose'
 
@@ -60,21 +60,19 @@ set laststatus=2
 set t_Co=256
 set background=dark
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+"if (has("termguicolors"))
+"  set termguicolors
+"endif
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme spacegray
 " colorscheme spacemacs-theme
-
-let g:spacegray_underline_search = 1
-let g:spacegray_italicize_comments = 1
+"
+colorscheme onedark
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='hybrid'
+let g:airline_theme='onedark'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
@@ -89,6 +87,8 @@ let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_enable_elixir_checker = 1
 " let g:syntastic_elixir_checkers = ["elixir"]
+"
+" set clipboard=unnamed
 
 function! s:my_cr_function()
   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
