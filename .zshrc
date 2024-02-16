@@ -70,7 +70,12 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions history-search-multi-word)
+plugins=(
+    zsh-autosuggestions
+    history-search-multi-word
+    zsh-syntax-highlighting
+    kube-ps1
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,26 +104,38 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /Users/dongkyl/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alias cat="bat"
+alias ls="lsd"
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls --tree"
+
+# Github Copilot
+alias copilot="gh copilot"
+alias gcs="gh copilot suggest"
+alias gce="gh copilot explain"
+#
+# Ruby
+export PATH=/opt/homebrew/opt/ruby/bin:$PATH
 
 # Go Env
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH:/opt/homebrew/bin"
 
 # NVM Env
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Pyenv
-export PATH="$HOME/.pyenv/shims:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # AutoJump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# Load rbenv automatically by appending
-# the following to ~/.zshrc:
+source <(kubectl completion zsh)
 
-eval "$(rbenv init - zsh)"
+export PATH=$PATH:/Users/dongkyl/.toolbox/bin:$HOME/.cargo/bin
+
