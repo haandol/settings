@@ -6,3 +6,4 @@
 - [Powerline10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew)
 - [Nerd Font](https://www.nerdfonts.com/)
 - [Oh-my-zsh](https://ohmyz.sh/)
+- [Zoxide](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
