@@ -28,7 +28,7 @@ set nobackup
 set noswapfile
 
 " line numbers and distances
-set relativenumber 
+" set relativenumber 
 set number 
 
 " number of lines offset when jumping
@@ -106,8 +106,9 @@ Plug 'tpope/vim-surround'
 " https://github.com/stevearc/oil
 Plug 'stevearc/oil.nvim'
 
-" https://github.com/APZelos/blamer.nvim
-Plug 'APZelos/blamer.nvim'
+" https://github.com/nvim-tree/nvim-tree.lua/wiki/Installation
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 
 " https://github.com/junegunn/fzf.vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -133,6 +134,38 @@ colorscheme bluloco-light
 " Show character column
 set colorcolumn=80
 
+" Keymaps
+" set new leader key
+let g:mapleader = " "
+
+" fzf
+nnoremap <C-p> <cmd>Files<CR>
+" window movement
+nnoremap <C-h> <C-w>h <CR>
+nnoremap <C-j> <C-w>j <CR>
+nnoremap <C-k> <C-w>k <CR>
+nnoremap <C-l> <C-w>l <CR>
+nnoremap <C-h> <cmd>wincmd h<CR>
+nnoremap <C-j> <cmd>wincmd j<CR>
+nnoremap <C-k> <cmd>wincmd k<CR>
+nnoremap <C-l> <cmd>wincmd l<CR>
+" window management
+nnoremap <leader>sv <C-w>v <CR>
+nnoremap <leader>sh <C-w>s <CR>
+nnoremap <leader>sx <cmd>close<CR>
+" tab
+nnoremap <leader>to <cmd>tabnew<CR>
+nnoremap <leader>tx <cmd>tabclose<CR>
+nnoremap <Tab> <cmd>tabn<CR>
+nnoremap <S-Tab> <cmd>tabp<CR>
+" oil
+nnoremap <leader>- <cmd>Oil><CR>
+" nvimtree
+nnoremap <leader>ee <cmd>NvimTreeToggle<CR>
+nnoremap <leader>ef <cmd>NvimTreeFindFileToggle<CR>
+nnoremap <leader>ec <cmd>NvimTreeCollapse<CR>
+nnoremap <leader>er <cmd>NvimTreeRefresh<CR>
+
 " lightline config - add file 'absolutepath'
 " Delete colorscheme line below if using Dark scheme
 let g:lightline = {
@@ -143,17 +176,13 @@ let g:lightline = {
       \ }
       \ }
 
-let g:blamer_enabled = 1
-" %a is the day of week, in case it's needed
-let g:blamer_date_format = '%e %b %Y'
-highlight Blamer guifg=darkorange
+" nvim tree, disable netrw
+let g:loaded_netrwPlugin = 1
+let g:loaded_netrw = 1
 
 " Marker based foding in vim files
 autocmd FileType vim setlocal foldmethod=marker
 
-nmap <C-p> <Cmd>Files<CR>
-nmap - <Cmd>Oil><CR>
-
-lua << EOF
-require("oil").setup()
-EOF
+" plugin config (lua)
+lua require("nvim-tree").setup()
+lua require("oil").setup()
