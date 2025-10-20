@@ -1,8 +1,4 @@
-AGENTS.md는 코드 에이전트(coding agents)가 프로젝트를 더 잘 이해하고 동작할 수 있도록 돕는 일종의 매뉴얼 파일이에요. README.md가 인간 개발자를 위한 것이라면, AGENTS.md는 AI 에이전트(자동화, 코드 보조 도구 등)가 필요로 할 구체적이고 예측 가능한 정보들을 담는 문서입니다. 아래에 “AGENTS.md 에 어떤 내용을 담아야 하는지”에 대한 구조와 항목들을 정리해 드릴게요. 필요하시면 예시도 같이 만들어드릴 수 있고, 프로젝트에 맞춰 조정할 수도 있고요.
-
----
-
-## AGENTS.md에 포함하면 좋은 항목들
+## AGENTS.md 작성 가이드
 
 아래 항목들은 대부분의 프로젝트에 유용하지만, 프로젝트의 특성(언어, 프레임워크, 규모, 모노레포 vs 단일 패키지 등)에 따라 추가하거나 생략할 수 있어요.
 
@@ -34,21 +30,27 @@ AGENTS.md는 코드 에이전트(coding agents)가 프로젝트를 더 잘 이�
 - 간단한 소개: 무엇을 하는 프로젝트인지
 - 프로젝트 구조: 주요 디렉터리 및 기능
 
-## Setup / Environment
+## Tech Stack
 
-- 필요한 의존성 설치: 예: `npm install`, `pip install -r requirements.txt`
+- 사용하고 있는 주요 언어 및 메이저 버전 (Python 3.13+ 등)
+- 사용하고 있는 핵심 서드파티 라이브러리와 메이저 버전 (StrandsAgents 1.9+ 등)
+
+## Installation / Setup
+
+- 필요한 의존성 설치: 예: `npm install`, `uv sync`
 - 환경 변수 (dotenv, secrets 등)
-- 개발환경 vs 프로덕션 환경 설정 차이
+- 개발환경 및 프로덕션 환경 설정
 
-## Build & Run Commands
+## Build / Run
 
-- 개발 서버 실행: `npm run dev`
+- 개발 서버 실행: `npm run dev`, `uv run src/main.py`
+- 도커화 방법: `docker built -t server .`
 - 프로덕션 빌드: `npm run build`
 - 배포 또는 실행: `npm start` 또는 도커 명령어 등
 
 ## Testing
 
-- 유닛 테스트 실행: `npm test`
+- 유닛 테스트 실행: `npm test`, `uv run pytest`
 - 통합 테스트 / E2E 테스트 방법
 - 커버리지 보고서 생성
 - CI 절차 (예: GitHub Actions, Jenkins)

@@ -1,3 +1,4 @@
+brew "adr-tools"
 brew "xz"
 brew "bat"
 brew "cmake"
