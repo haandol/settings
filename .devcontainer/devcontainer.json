@@ -1,0 +1,13 @@
+{
+  "name": "Git",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers-community/npm-features/prettier:1": {}
+  },
+  "mounts": [
+    "source=${env:HOME}${env:USERPROFILE}/.aws,target=/home/node/.aws,type=bind",
+    "source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind"
+  ]
+}
